@@ -1,0 +1,30 @@
+<div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+
+<h5>Liste des salariés</h5><br>
+<div class="form-group">
+  <label>Critère d'unicité</label>
+  <select class="form-control" style="width: 13%" [formControl]="critere" (change)="getSalaries(critere)">
+    <option value="">Sélectionner</option>
+    <option value="salno" >Numéro</option>
+    <option value="salname" >Nom</option>
+    <option value="position">Postion</option>
+  </select>
+</div>
+<div *ngIf="critere">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Numéro</th>
+      <th>Name</th>
+      <th>Position</th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let salarie of salaries">
+    <tr>
+      <td>{{salarie.salno}}</td>
+      <td>{{salarie.salname}}</td>
+      <td>{{salarie.position}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

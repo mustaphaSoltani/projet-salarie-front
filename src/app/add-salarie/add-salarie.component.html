@@ -1,0 +1,49 @@
+<div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+
+<h5>Ajouter un salarié</h5><br>
+<div class="form-group">
+  <label>Critère d'unicité</label>
+  <select required class="form-control" style="width: 13%" [formControl]="critere">
+    <option value="">Sélectionner</option>
+    <option value="salno">Numéro</option>
+    <option value="salname">Nom</option>
+    <option value="position">Postion</option>
+  </select>
+</div>
+<div>
+  <div class="row-header">
+    <label>Numéro :</label>
+  </div>
+  <div class="row-header">
+    <label>Nom :</label>
+  </div>
+  <div class="row-header">
+    <label>Position :</label>
+  </div>
+</div>
+<form [formGroup]="salarieForm">
+  <div formGroupName="type">
+    <div formArrayName="options">
+      <div *ngFor="let child of salarieForm.get('type.options')['controls']; let i = index">
+        <div [formGroupName]="i">
+          <div class="row-header">
+            <input required formControlName="salno" class="form-control form-control">
+          </div>
+          <div class="row-header">
+            <input required formControlName="salname" class="form-control">
+          </div>
+          <div class="row-header">
+            <input required formControlName="position" class="form-control">
+          </div>
+          <div *ngIf=" i === fields.type.options.length - 1 " class="row-header">
+            <button class="btn btn-success" (click)="addRow()"><i class="fa fa-plus" aria-hidden="true"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="form-group">
+    <button [disabled]="salarieForm.invalid || critere.invalid" class="btn btn-success" (click)="addSalarie(salarieForm.value)">Envoyer</button>
+  </div>
+</form>

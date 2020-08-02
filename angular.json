@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "salarie-front"
+    }
+  },
+  "defaultProject": "salarie-front",
+  "cli": {
+    "analytics": "01b2997e-1f9d-49ac-95a5-6065b436cdf0"
+  }
 }

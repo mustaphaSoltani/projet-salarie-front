@@ -1,0 +1,12 @@
+.ng-invalid.ng-touched{
+  border-color: red;
+}
+.row-header{
+  display: inline-flex;
+  padding-right: 10px;
+  width: 25%;
+}
+
+.ng-invalid.ng-touched{
+  border-color: red;
+}
